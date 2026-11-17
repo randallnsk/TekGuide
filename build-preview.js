@@ -1,8 +1,8 @@
 // Bundles the app into one self-contained page (used for the Claude preview link).
-// Usage: node tools/build-preview.js <output.html>
+// Usage: node build-preview.js <output.html>
 const fs = require('fs');
 const path = require('path');
-const root = path.join(__dirname, '..');
+const root = __dirname;
 const read = (p) => fs.readFileSync(path.join(root, p), 'utf8');
 
 const html = read('index.html');
@@ -13,7 +13,7 @@ const scripts = [...html.matchAll(/<script src="([^"]+)"><\/script>/g)].map((m) 
 
 const out = [
   head,
-  '<style>\n' + read('css/styles.css') + '\n</style>',
+  '<style>\n' + read('styles.css') + '\n</style>',
   app,
   ...scripts.map((s) => '<script>\n' + read(s).replace(/<\/script/gi, '<\\/script') + '\n</script>'),
 ].join('\n');

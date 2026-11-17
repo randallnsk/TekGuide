@@ -1,13 +1,13 @@
 /* Saves the app on the phone so it works with no signal.
    When you change any file, bump VERSION so phones pick up the new copy. */
-var VERSION = 'tech-guide-v2';
+var VERSION = 'tech-guide-v3';
 var FILES = [
   './', './index.html', './manifest.json',
-  './css/styles.css',
-  './js/app.js', './js/search.js', './js/checklist.js',
-  './content/hvac.js', './content/plumbing.js', './content/electrical.js', './content/fire-life-safety.js',
-  './content/daily-rounds.js', './content/escalation.js',
-  './icons/icon.svg', './icons/icon-192.png', './icons/icon-512.png', './icons/apple-touch-icon.png'
+  './styles.css',
+  './app.js', './search.js', './checklist.js',
+  './hvac.js', './plumbing.js', './electrical.js', './fire-life-safety.js',
+  './daily-rounds.js', './escalation.js',
+  './icon.svg', './icon-192.png', './icon-512.png', './apple-touch-icon.png'
 ];
 
 self.addEventListener('install', function (e) {
