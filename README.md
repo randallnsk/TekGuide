@@ -8,6 +8,11 @@ All the writing lives in the system files below (hvac.js, plumbing.js and so on)
 - `hvac.js`, `plumbing.js`, `electrical.js`, `fire-life-safety.js` – overview, equipment, troubleshooting guides, safety, glossary for each system
 - `daily-rounds.js` – daily rounds checklist items
 - `escalation.js` – when to stop and call for help
+- `drawings.js` – labeled drawings for every equipment type
+- `manuals.js` – official manufacturer manual links (each one checked before adding)
+- `building.js` – your building's own photos and exact manuals (photos go in the `photos` folder)
+
+This repository is public: never add addresses, phone numbers, staff names or photos that show where a building is.
 
 Wrap words in `**double stars**` to make them bold. Glossary words become tappable automatically.
 After changing any file, bump `VERSION` in `service-worker.js` so phones pick up the update.

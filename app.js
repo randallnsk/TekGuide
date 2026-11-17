@@ -171,6 +171,9 @@
         '<div class="eq-head"><span class="eq-tag">' + TG.esc(e.tag) + '</span><h3>' + TG.esc(e.name) + '</h3></div>' +
         '<p>' + TG.fmt(e.what, sn) + '</p>' +
         '<p class="where"><strong>Where:</strong> ' + TG.fmt(e.where, sn) + '</p>' +
+        '<button type="button" class="eq-open" data-eq="' + id + '/' + e.id + '">' +
+          '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="m21 17-5-5-8 7"/></svg>' +
+          (TG.equip && TG.equip.hasPhoto(id + '/' + e.id) ? 'Photo, drawing &amp; manuals' : 'Picture &amp; manuals') + '</button>' +
         '<details><summary>What to check</summary><ul class="ticks">' +
         e.check.map(function (x) { return '<li>' + TG.fmt(x, sn) + '</li>'; }).join('') +
         '</ul></details></article>';
@@ -308,6 +311,8 @@
   document.addEventListener('click', function (e) {
     var term = e.target.closest('.term');
     if (term) { e.preventDefault(); openTerm(+term.getAttribute('data-g')); return; }
+    var eqBtn = e.target.closest('.eq-open');
+    if (eqBtn && TG.equip) { e.preventDefault(); TG.equip.open(eqBtn.getAttribute('data-eq'), eqBtn); return; }
     var jump = e.target.closest('[data-jump]');
     if (jump) { e.preventDefault(); TG.focusTarget(jump.getAttribute('data-jump')); return; }
     if (!sheet.hidden && !e.target.closest('.sheet')) closeTerm();

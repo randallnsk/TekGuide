@@ -15,8 +15,14 @@ const out = [
   head,
   '<style>\n' + read('styles.css') + '\n</style>',
   app,
-  ...scripts.map((s) => '<script>\n' + read(s).replace(/<\/script/gi, '<\\/script') + '\n</script>'),
+  ...scripts.map((s) => '<script>\n' + inlinePhotos(read(s)).replace(/<\/script/gi, '<\\/script') + '\n</script>'),
 ].join('\n');
+
+// Photos are embedded so the single-file preview shows them.
+function inlinePhotos(js) {
+  return js.replace(/"(photos\/[^"]+\.(jpe?g|png))"/g, (m, p, ext) =>
+    '"data:image/' + (ext === 'png' ? 'png' : 'jpeg') + ';base64,' + fs.readFileSync(path.join(root, p)).toString('base64') + '"');
+}
 
 const dest = process.argv[2] || path.join(root, 'preview.html');
 fs.writeFileSync(dest, out);

@@ -417,3 +417,77 @@ mark { background: color-mix(in srgb, var(--accent) 55%, transparent); color: in
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+/* ---------- Equipment panel: picture & manuals ---------- */
+.eq-open {
+  margin-top: 12px; display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 14px;
+  border-radius: 999px; border: 1.5px solid var(--sys); background: transparent; color: var(--fg);
+  font-weight: 700; font-size: 15px; cursor: pointer;
+}
+.eq-open .icon { width: 18px; height: 18px; color: var(--sys); }
+.eq-open:hover { background: color-mix(in srgb, var(--sys) 14%, transparent); }
+.panel-open, .panel-open body { overflow: hidden; }
+.eq-panel {
+  position: fixed; inset: 0; z-index: 60; overflow-y: auto; overscroll-behavior: contain;
+  background: var(--bg);
+  padding-top: env(safe-area-inset-top, 0px); padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 24px);
+}
+.eq-panel-inner {
+  max-width: 720px; margin: 0 auto; display: grid; gap: 4px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.eq-panel-head {
+  position: sticky; top: 0; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding-block: 12px; background: var(--bg); border-bottom: 1px solid var(--line);
+}
+.eq-panel-head h2 { font-family: var(--font-display); font-weight: 900; font-size: 26px; text-transform: uppercase; line-height: 1.05; }
+.eq-close { flex: none; }
+.eq-sec { padding-block: 14px 4px; }
+.eq-sec h3 { font-family: var(--font-display); font-weight: 800; font-size: 22px; text-transform: uppercase; margin-bottom: 8px; }
+.eq-sec h3::before { content: ""; display: inline-block; width: 10px; height: 10px; background: var(--sys); margin-right: 8px; vertical-align: .1em; }
+.eq-tabs { display: flex; gap: 6px; margin-bottom: 10px; }
+.eq-tabs button {
+  flex: 1; min-height: 40px; border-radius: 999px; border: 1.5px solid var(--line); background: var(--surface);
+  font-weight: 700; font-size: 14.5px; cursor: pointer;
+}
+.eq-tabs button[aria-selected="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+.eq-photo { margin: 0; display: grid; gap: 8px; }
+.eq-photo img { width: 100%; height: auto; border-radius: var(--radius); display: block; background: var(--surface-2); }
+.eq-photo figcaption { color: var(--muted); font-size: 15px; }
+.eq-svg { width: 100%; height: auto; display: block; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); }
+.spot { margin: 0; padding: 0; list-style: none; counter-reset: spot; display: grid; gap: 10px; }
+.spot li { counter-increment: spot; display: grid; grid-template-columns: 26px 1fr; gap: 10px; align-items: start; font-size: 16px; }
+.spot li::before {
+  content: counter(spot); display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%;
+  background: var(--accent); color: var(--on-accent); font-family: var(--font-mono); font-weight: 700; font-size: 13px;
+}
+.eq-note { color: var(--muted); font-size: 14.5px; margin-top: 10px; }
+.links { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.links a {
+  display: grid; gap: 3px; padding: 12px 14px; border-radius: var(--radius); text-decoration: none;
+  background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--sys);
+}
+.links a:hover { border-color: var(--sys); }
+.links strong { font-size: 16px; }
+.links span { color: var(--muted); font-size: 14.5px; }
+.links .host { font-family: var(--font-mono); font-size: 12px; color: var(--sys); }
+
+/* Drawing parts (theme-aware) */
+.eq-svg .d-b { fill: var(--surface-2); stroke: var(--fg); stroke-width: 1.5; }
+.eq-svg .d-p { fill: color-mix(in srgb, var(--sys) 16%, var(--surface)); stroke: var(--sys); stroke-width: 1.5; }
+.eq-svg .d-l { fill: none; stroke: var(--muted); stroke-width: 1.5; }
+.eq-svg .d-s { fill: none; stroke: var(--sys); stroke-width: 1.5; }
+.eq-svg .d-e { fill: color-mix(in srgb, var(--c-elec) 18%, var(--surface)); stroke: var(--c-elec); stroke-width: 1.8; }
+.eq-svg .d-w { fill: none; stroke: var(--c-plumb); stroke-width: 3; stroke-linecap: round; }
+.eq-svg .d-r { fill: color-mix(in srgb, var(--c-fire) 16%, var(--surface)); stroke: var(--c-fire); stroke-width: 2.2; stroke-linecap: round; }
+.eq-svg .d-rp { fill: none; stroke: var(--c-fire); stroke-width: 2.2; stroke-linecap: round; }
+.eq-svg .d-g { fill: none; stroke: var(--line); stroke-width: 2; stroke-dasharray: 5 4; }
+.eq-svg .d-k { fill: var(--fg); stroke: none; }
+.eq-svg .d-k2 { fill: var(--surface); stroke: var(--muted); stroke-width: 1.2; }
+.eq-svg .d-gl { fill: var(--c-plumb); stroke: none; }
+.eq-svg .d-rl { fill: var(--c-fire); stroke: none; }
+.eq-svg .d-yl { fill: var(--c-elec); stroke: none; }
+.eq-svg .d-t { fill: var(--muted); font-family: var(--font-mono); font-weight: 700; }
+.eq-svg .d-rt { fill: var(--c-fire); font-family: var(--font-display); font-weight: 900; }
+.eq-svg .d-mk { fill: var(--accent); stroke: var(--bg); stroke-width: 2; }
+.eq-svg .d-mkt { fill: var(--on-accent); font-family: var(--font-mono); font-weight: 700; font-size: 11px; }
