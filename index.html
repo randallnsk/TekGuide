@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!--HEAD-START-->
+<title>Tech Guide</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="A plain-language field guide for new maintenance technicians in commercial buildings.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Big+Shoulders+Display:wght@700;800;900&family=Big+Shoulders+Stencil+Display:wght@900&family=JetBrains+Mono:wght@500;700&display=swap">
+<!--HEAD-END-->
+<meta name="theme-color" content="#0D1215">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Tech Guide">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<!--APP-START-->
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#home" aria-label="Tech Guide home"><span class="brand-mark">TG</span><span class="brand-word">Tech Guide</span></a>
+    <div class="search" role="search">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+      <input id="q" type="search" placeholder="Search: leak, filter, boiler…" autocomplete="off" aria-label="Search the guide" aria-controls="results">
+      <button type="button" class="search-clear" id="q-clear" aria-label="Clear search" hidden>✕</button>
+    </div>
+  </div>
+  <div class="results" id="results" hidden></div>
+</header>
+
+<main id="view"></main>
+
+<div class="sheet" id="term-sheet" role="dialog" aria-modal="false" aria-labelledby="term-title" hidden>
+  <div class="wrap">
+    <div class="sheet-top"><span class="label">Words to know</span><button type="button" class="sheet-close" aria-label="Close">✕</button></div>
+    <h3 id="term-title">Term</h3>
+    <p>Definition</p>
+    <button type="button" class="sheet-link">See all words</button>
+  </div>
+</div>
+
+<nav class="bottomnav" aria-label="Main">
+  <ul>
+    <li><a href="#home" data-nav="home"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11 12 4l9 7v9h-6v-6H9v6H3z"/></svg>Home</a></li>
+    <li><a href="#rounds" data-nav="rounds"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4h6v3H9z"/><path d="m9 13 2 2 4-4"/></svg>Rounds</a></li>
+    <li><button type="button" data-action="search"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>Search</button></li>
+    <li><a href="#escalate" data-nav="escalate" class="nav-stop"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 2h8l6 6v8l-6 6H8l-6-6V8z"/><path d="M12 7v6"/><path d="M12 17h.01"/></svg>Stop &amp; call</a></li>
+  </ul>
+</nav>
+<!--APP-END-->
+<script src="content/hvac.js"></script>
+<script src="content/plumbing.js"></script>
+<script src="content/electrical.js"></script>
+<script src="content/fire-life-safety.js"></script>
+<script src="content/daily-rounds.js"></script>
+<script src="content/escalation.js"></script>
+<script src="js/app.js"></script>
+<script src="js/search.js"></script>
+<script src="js/checklist.js"></script>
+</body>
+</html>
