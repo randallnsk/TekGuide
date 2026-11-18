@@ -118,6 +118,8 @@
     }
     h += '</section>';
 
+    if (TG.brands) h += TG.brands.forEquip(key);
+
     h += '<section class="eq-sec"><h3>How to find the right manual</h3><ol class="spot">' +
       M.howToFind.map(function (s) { return '<li><span>' + TG.fmt(s, null) + '</span></li>'; }).join('') + '</ol></section>';
 

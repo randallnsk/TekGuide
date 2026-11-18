@@ -33,6 +33,12 @@
         index.push({ sys: TG.sys(sid), type: 'Daily rounds', title: r.text, text: r.why, target: 'r-' + sid + '-' + i, page: 'rounds', boost: 0 });
       });
     });
+    var BR = window.TG_BRANDS;
+    if (BR) {
+      BR.list.forEach(function (b) {
+        index.push({ sys: TG.sys('hvac'), type: 'Brand', title: b.name, text: (b.aka || '') + ' ' + (b.search || '') + ' ' + b.makesText + ' ' + b.phones.map(function (p) { return p.label + ' ' + p.number; }).join(' '), target: 'brand-' + b.id, page: 'brands', boost: 6 });
+      });
+    }
     var E = window.TG_ESCALATION;
     if (E) {
       E.universal.forEach(function (u, i) {

@@ -11,6 +11,7 @@ All the writing lives in the system files below (hvac.js, plumbing.js and so on)
 - `drawings.js` – labeled drawings for every equipment type
 - `manuals.js` – official manufacturer manual links (each one checked before adding)
 - `codeguides.js` – alarm flowcharts for equipment with alarm displays
+- `brands.js` – brand directory: websites and tech support numbers (with the date they were checked)
 - `building.js` – your building's own photos and exact manuals (photos go in the `photos` folder)
 
 This repository is public: never add addresses, phone numbers, staff names or photos that show where a building is.

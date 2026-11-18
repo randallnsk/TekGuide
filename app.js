@@ -113,6 +113,8 @@
       '<section class="wrap">' +
         '<div class="section-head"><h2>Systems</h2><span class="label">Tap one to start</span></div>' +
         '<div class="systems">' + TG.SYSTEMS.map(systemTile).join('') + '</div>' +
+        '<a class="brand-tile" href="#brands"><span class="brand-tile-mark">A–Z</span>' +
+          '<div><strong>Brand directory</strong><span>Websites, manuals and tech support numbers for 18 HVAC makers.</span></div></a>' +
         '<a class="stop-tile" href="#escalate"><span class="octagon">STOP</span>' +
           '<div><strong>Stop &amp; call</strong><span>When to stop and get a senior tech or contractor.</span></div></a>' +
         DISCLAIMER +
@@ -236,6 +238,7 @@
       }).join('') + '</div>';
     h += '<div class="section-head"><h2>Who to call</h2></div><div class="calls">' +
       E.whoToCall.map(function (w) { return '<div class="call"><strong>' + TG.esc(w.who) + '</strong><span>' + TG.esc(w.when) + '</span></div>'; }).join('') +
+      '<div class="call"><strong>Manufacturer tech support</strong><span>Questions about a specific unit, usually made by your senior tech. <a href="#brands">Open the brand directory</a>.</span></div>' +
       '</div><p class="note">' + TG.esc(E.whoToCallNote || '') + '</p>';
     h += '<div class="section-head"><h2>By system</h2></div>';
     TG.SYSTEMS.forEach(function (s) {
@@ -276,15 +279,17 @@
     var html;
     if (s) html = renderSystem(s);
     else if (page === 'rounds' && TG.rounds) html = TG.rounds.render();
+    else if (page === 'brands' && TG.brands) html = TG.brands.render();
     else if (page === 'escalate') html = renderEscalate();
     else { page = 'home'; html = renderHome(); }
     view.innerHTML = html;
     document.querySelectorAll('.bottomnav [data-nav]').forEach(function (a) {
       if (a.getAttribute('data-nav') === page) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
     });
-    var titles = { home: 'Tech Guide', rounds: 'Daily Rounds · Tech Guide', escalate: 'Stop & Call · Tech Guide' };
+    var titles = { home: 'Tech Guide', rounds: 'Daily Rounds · Tech Guide', escalate: 'Stop & Call · Tech Guide', brands: 'Brands · Tech Guide' };
     document.title = s ? s.name + ' · Tech Guide' : (titles[page] || 'Tech Guide');
     if (page === 'rounds' && TG.rounds) TG.rounds.bind();
+    if (page === 'brands' && TG.brands) TG.brands.bind();
     if (pendingFocus) { var t = pendingFocus; pendingFocus = null; setTimeout(function () { TG.focusTarget(t); }, 30); }
     else window.scrollTo(0, 0);
   }
