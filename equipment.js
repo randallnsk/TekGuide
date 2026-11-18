@@ -89,6 +89,22 @@
     }
     h += '</section>';
 
+    // Code flowcharts for your building's units
+    ((B.codeGuides && B.codeGuides[key]) || []).forEach(function (g) {
+      h += '<section class="eq-sec"><h3>' + TG.esc(g.title) + '</h3><div class="flowchart">' +
+        '<div class="fc-box fc-start">' + TG.esc(g.start) + '</div><div class="fc-arrow" aria-hidden="true"></div>' +
+        '<div class="fc-box fc-q">' + TG.esc(g.question) + '</div><div class="fc-arrow" aria-hidden="true"></div>' +
+        '<div class="fc-branches">' + g.branches.map(function (b) {
+          return '<div class="fc-branch fc-' + b.key + '"><div class="fc-code"><code>' + TG.esc(b.code) + '</code><span>' + TG.esc(b.name) + '</span></div>' +
+            '<p class="fc-means">' + TG.esc(b.means) + '</p>' +
+            '<ul class="fc-steps">' + b.steps.map(function (s) { return '<li>' + TG.esc(s) + '</li>'; }).join('') + '</ul>' +
+            (b.watch ? '<p class="fc-watch"><strong>Watch for:</strong> ' + TG.esc(b.watch) + '</p>' : '') + '</div>';
+        }).join('') + '</div><div class="fc-arrow" aria-hidden="true"></div>' +
+        '<div class="fc-box fc-end">' + TG.esc(g.end) + '</div>' +
+        '<ul class="fc-rules">' + g.rules.map(function (r) { return '<li>' + TG.esc(r) + '</li>'; }).join('') + '</ul>' +
+        '</div><p class="eq-note">' + TG.esc(g.source) + '</p></section>';
+    });
+
     // Maker libraries
     h += '<section class="eq-sec"><h3>Manufacturer manuals</h3>';
     if (libs.length) {

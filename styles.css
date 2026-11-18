@@ -491,3 +491,32 @@ mark { background: color-mix(in srgb, var(--accent) 55%, transparent); color: in
 .eq-svg .d-rt { fill: var(--c-fire); font-family: var(--font-display); font-weight: 900; }
 .eq-svg .d-mk { fill: var(--accent); stroke: var(--bg); stroke-width: 2; }
 .eq-svg .d-mkt { fill: var(--on-accent); font-family: var(--font-mono); font-weight: 700; font-size: 11px; }
+
+/* ---------- Code flowchart ---------- */
+.flowchart { display: grid; justify-items: center; }
+.fc-box {
+  width: 100%; padding: 12px 14px; border-radius: var(--radius); text-align: center; font-weight: 700; font-size: 15.5px;
+  background: var(--surface); border: 1.5px solid var(--line);
+}
+.fc-q { background: var(--fg); color: var(--bg); border-color: var(--fg); font-family: var(--font-display); font-weight: 800; font-size: 21px; text-transform: uppercase; letter-spacing: .01em; }
+.fc-end { border-style: dashed; }
+.fc-arrow { width: 2px; height: 22px; background: var(--muted); position: relative; }
+.fc-arrow::after { content: ""; position: absolute; left: 50%; bottom: -1px; transform: translateX(-50%); border: 6px solid transparent; border-top-color: var(--muted); border-bottom: 0; }
+.fc-branches { width: 100%; display: grid; gap: 10px; }
+@media (min-width: 600px) { .fc-branches { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.fc-branch {
+  --fc: var(--warn); min-width: 0; display: grid; align-content: start; gap: 8px; padding: 12px 14px;
+  border-radius: var(--radius); background: var(--surface); border: 1.5px solid var(--line); border-top: 6px solid var(--fc);
+}
+.fc-wrn { --fc: var(--c-elec); }
+.fc-auto { --fc: var(--c-hvac); }
+.fc-lock { --fc: var(--danger); }
+.fc-code { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.fc-code code { font-family: var(--font-mono); font-weight: 700; font-size: 15px; padding: 2px 8px; border-radius: 5px; background: var(--fc); color: var(--bg); }
+.fc-code span { font-family: var(--font-display); font-weight: 800; font-size: 20px; text-transform: uppercase; }
+.fc-means { font-size: 15px; }
+.fc-steps { margin: 0; padding-left: 18px; display: grid; gap: 4px; font-size: 15px; font-weight: 700; }
+.fc-watch { font-size: 14px; color: var(--muted); border-top: 1px dashed var(--line); padding-top: 8px; overflow-wrap: anywhere; }
+.fc-watch strong { color: var(--fg); }
+.fc-rules { width: 100%; list-style: none; margin: 12px 0 0; padding: 10px 12px; border-radius: 8px; background: var(--danger-bg); display: grid; gap: 4px; font-size: 14.5px; font-weight: 700; }
+.fc-rules li::before { content: "✕ "; color: var(--danger); }
