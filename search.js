@@ -36,7 +36,7 @@
     var BR = window.TG_BRANDS;
     if (BR) {
       BR.list.forEach(function (b) {
-        index.push({ sys: TG.sys('hvac'), type: 'Brand', title: b.name, text: (b.aka || '') + ' ' + (b.search || '') + ' ' + b.makesText + ' ' + b.phones.map(function (p) { return p.label + ' ' + p.number; }).join(' '), target: 'brand-' + b.id, page: 'brands', boost: 6 });
+        index.push({ sys: TG.sys((b.trades || ['hvac'])[0] === 'electrical' ? 'electrical' : ((b.trades || ['hvac'])[0] === 'plumbing' ? 'plumbing' : 'hvac')), type: 'Brand', title: b.name, text: (b.aka || '') + ' ' + (b.search || '') + ' ' + b.makesText + ' ' + b.phones.map(function (p) { return p.label + ' ' + p.number; }).join(' '), target: 'brand-' + b.id, page: 'brands', boost: 6 });
       });
     }
     var E = window.TG_ESCALATION;

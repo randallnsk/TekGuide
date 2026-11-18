@@ -51,6 +51,7 @@
 }
 
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
 html { -webkit-text-size-adjust: 100%; }
 body {
   margin: 0;
@@ -544,10 +545,10 @@ mark { background: color-mix(in srgb, var(--accent) 55%, transparent); color: in
 .brand-count { margin: 16px 0 8px; }
 .brands { display: grid; gap: 10px; }
 @media (min-width: 680px) { .brands { grid-template-columns: 1fr 1fr; } }
-.brand-card { min-width: 0; padding: 14px 16px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); border-top: 5px solid var(--c-hvac); display: grid; gap: 10px; align-content: start; scroll-margin-top: 84px; }
+.brand-card { --trade: var(--c-hvac); min-width: 0; padding: 14px 16px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); border-top: 5px solid var(--trade); display: grid; gap: 10px; align-content: start; scroll-margin-top: 84px; }
 .brand-head h3 { font-family: var(--font-display); font-weight: 900; font-size: 28px; text-transform: uppercase; line-height: 1; }
 .brand-aka { color: var(--muted); font-size: 14.5px; margin-top: 4px; }
-.brand-makes { font-family: var(--font-mono); font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--c-hvac); margin-top: 6px; }
+.brand-makes { font-family: var(--font-mono); font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
 .phones { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
 .ph { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 10px; align-items: center; padding: 10px 0; border-top: 1px dashed var(--line); }
 .ph-main { display: grid; gap: 2px; min-width: 0; }
@@ -566,3 +567,10 @@ mark { background: color-mix(in srgb, var(--accent) 55%, transparent); color: in
 .mini-brand strong { font-size: 16px; text-decoration: underline; text-underline-offset: 3px; }
 .mini-brand span { color: var(--muted); font-size: 13.5px; }
 .mini-brands .ph-num { font-size: 16px; flex: none; }
+
+.trade-tabs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
+.ttab { min-height: 44px; padding: 0 6px; border-radius: 10px; border: 1.5px solid var(--line); background: var(--surface); font-family: var(--font-display); font-weight: 800; font-size: 16px; text-transform: uppercase; letter-spacing: .02em; cursor: pointer; border-bottom: 4px solid var(--trade); }
+.ttab[aria-pressed="true"] { background: var(--trade); color: var(--bg); border-color: var(--trade); }
+@media (max-width: 380px) { .ttab { font-size: 14px; } }
+.brand-trades { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+.brand-trades span { font-family: var(--font-mono); font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 3px 8px; border-radius: 999px; border: 1.5px solid var(--trade); color: var(--fg); }

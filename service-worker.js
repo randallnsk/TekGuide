@@ -1,6 +1,6 @@
 /* Saves the app on the phone so it works with no signal.
    When you change any file, bump VERSION so phones pick up the new copy. */
-var VERSION = 'tech-guide-v7';
+var VERSION = 'tech-guide-v8';
 var FILES = [
   './', './index.html', './manifest.json',
   './styles.css',

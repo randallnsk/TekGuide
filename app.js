@@ -114,7 +114,7 @@
         '<div class="section-head"><h2>Systems</h2><span class="label">Tap one to start</span></div>' +
         '<div class="systems">' + TG.SYSTEMS.map(systemTile).join('') + '</div>' +
         '<a class="brand-tile" href="#brands"><span class="brand-tile-mark">A–Z</span>' +
-          '<div><strong>Brand directory</strong><span>Websites, manuals and tech support numbers for 18 HVAC makers.</span></div></a>' +
+          '<div><strong>Brand directory</strong><span>Websites, manuals and tech support numbers for ' + ((window.TG_BRANDS && window.TG_BRANDS.list.length) || '') + ' HVAC, plumbing and electrical makers.</span></div></a>' +
         '<a class="stop-tile" href="#escalate"><span class="octagon">STOP</span>' +
           '<div><strong>Stop &amp; call</strong><span>When to stop and get a senior tech or contractor.</span></div></a>' +
         DISCLAIMER +
