@@ -42,7 +42,7 @@
     var d = D[key];
     if (!d) return '';
     return '<section class="eq-sec"><h3>How to spot it</h3><p class="eq-note" style="margin:0 0 10px">Numbers match the labeled drawing.</p><ol class="spot">' +
-      d.marks.map(function (m) { return '<li>' + TG.esc(m[2]) + '</li>'; }).join('') +
+      d.marks.map(function (m) { return '<li><span>' + TG.esc(m[2]) + '</span></li>'; }).join('') +
       '</ol><p class="eq-note">This drawing shows a typical layout. Real units differ by brand and size.</p></section>';
   }
 
@@ -90,7 +90,8 @@
     h += '</section>';
 
     // Code flowcharts for your building's units
-    ((B.codeGuides && B.codeGuides[key]) || []).forEach(function (g) {
+    var G = window.TG_CODEGUIDES || {};
+    ((B.codeGuides && B.codeGuides[key]) || []).concat(G[key] || []).forEach(function (g) {
       h += '<section class="eq-sec"><h3>' + TG.esc(g.title) + '</h3><div class="flowchart">' +
         '<div class="fc-box fc-start">' + TG.esc(g.start) + '</div><div class="fc-arrow" aria-hidden="true"></div>' +
         '<div class="fc-box fc-q">' + TG.esc(g.question) + '</div><div class="fc-arrow" aria-hidden="true"></div>' +
@@ -118,7 +119,7 @@
     h += '</section>';
 
     h += '<section class="eq-sec"><h3>How to find the right manual</h3><ol class="spot">' +
-      M.howToFind.map(function (s) { return '<li>' + TG.fmt(s, null) + '</li>'; }).join('') + '</ol></section>';
+      M.howToFind.map(function (s) { return '<li><span>' + TG.fmt(s, null) + '</span></li>'; }).join('') + '</ol></section>';
 
     return h + '</div>';
   }

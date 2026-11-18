@@ -1,13 +1,13 @@
 /* Saves the app on the phone so it works with no signal.
    When you change any file, bump VERSION so phones pick up the new copy. */
-var VERSION = 'tech-guide-v5';
+var VERSION = 'tech-guide-v6';
 var FILES = [
   './', './index.html', './manifest.json',
   './styles.css',
   './app.js', './search.js', './checklist.js',
   './hvac.js', './plumbing.js', './electrical.js', './fire-life-safety.js',
   './daily-rounds.js', './escalation.js',
-  './drawings.js', './manuals.js', './building.js', './equipment.js', './photos/hvac-rtu-york.jpg',
+  './drawings.js', './manuals.js', './building.js', './codeguides.js', './equipment.js', './photos/hvac-rtu-york.jpg',
   './icon.svg', './icon-192.png', './icon-512.png', './apple-touch-icon.png'
 ];
 
